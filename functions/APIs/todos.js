@@ -23,16 +23,22 @@ exports.getAllTodos = async (req, res) => {
   }
 };
 
-// exports.getOneTodo = async (req, res) => {
-//   try {
-//     const document = db.collection("todos").doc(`${req.params.todoId}`);
-//     const doc = await document.get();
-//     console.log(doc.data());
-//     return res.status(200).json(doc);
-//   } catch (error) {
-//     return res.status(500).json({ error: error.message });
-//   }
-// };
+exports.getOneTodo = async (req, res) => {
+  try {
+    const document = db.collection("todos").doc(`${req.params.todoId}`);
+    const doc = await document.get();
+    const returnObject = {
+      todoId: doc.id,
+      title: doc.data().title,
+      body: doc.data().body,
+      createdAt: doc.data().createdAt,
+      username: doc.data().username,
+    }
+    return res.status(200).json(returnObject);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
 
 exports.postOneTodo = async (req, res) => {
   try {
@@ -52,7 +58,6 @@ exports.postOneTodo = async (req, res) => {
     const newTodo = await db.collection("todos").add(newTodoItem);
 
     newTodoItem.id = newTodo.id;
-
     return res.status(201).json(newTodoItem);
   } catch (error) {
     return res.status(500).json({

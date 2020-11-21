@@ -25,7 +25,7 @@ app.post("/user", auth, updateUserDetails);
 //todos
 app.get("/todos", auth, getAllTodos);
 app.post("/todo", auth, postOneTodo);
-// app.get("/todo/:todoId", auth, getOneTodo);
+app.get("/todo/:todoId", auth, getOneTodo);
 app.delete("/todo/:todoId", auth, deleteTodo);
 app.put("/todo/:todoId", auth, editTodo);
 
