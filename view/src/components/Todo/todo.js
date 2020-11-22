@@ -212,7 +212,7 @@ function Todo({ history }) {
 									name="body"
 									autoComplete="todoDetails"
 									multiline
-									rows={25}
+									rows={22}
 									rowsMax={25}
 									helperText={errors.body}
 									error={errors.body ? true : false}
