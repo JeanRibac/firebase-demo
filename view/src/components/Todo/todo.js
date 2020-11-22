@@ -60,7 +60,7 @@ function Todo({ history }) {
 		}
 	}, [history])
 
-	useEffect(() => getTodos(), [getTodos, history]);
+	useEffect(() => { getTodos() }, [getTodos, history]);
 
 	const deleteTodoHandler = async (data) => {
 		try {
