@@ -31,4 +31,4 @@ app.get("/todo/:todoId", auth, getOneTodo);
 app.delete("/todo/:todoId", auth, deleteTodo);
 app.put("/todo/:todoId", auth, editTodo);
 
-exports.api = functions.https.onRequest(app);
+exports.api = functions.region('europe-west1').https.onRequest(app);
