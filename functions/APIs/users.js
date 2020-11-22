@@ -153,7 +153,7 @@ exports.getUserDetail = async (req, res) => {
     let userData = {};
     const doc = await db.doc(`/users/${req.user.username}`).get();
     userData.userCredentials = doc.data();
-    return res.json(userData);
+    return res.status(200).json(userData);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: error.code });
